@@ -8,10 +8,13 @@ using System.Threading.Tasks;
 
 namespace EF.ToList
 {
+    /*
+     Model class reflect structure of the table
+         */
     public class Employee
     {
         [Key]
-        public int EmpId { get; set; }
+        public int EmpId { get; set; } //Column is treated as a property
         public string EmpName { get; set; }
         public decimal Salary { get; set; }
     }
@@ -28,12 +31,29 @@ namespace EF.ToList
 
     public class RunProgram
     {
-        public static void run()
+        public static void runToList()
         {
             CompanyDBContext db = new CompanyDBContext();
             List<Employee> emps = db.Employees.ToList();
 
             foreach(Employee e in emps)
+            {
+                Console.Write(e.EmpId);
+                Console.Write(",");
+                Console.Write(e.EmpName);
+                Console.Write(",");
+                Console.Write(e.Salary);
+                Console.WriteLine();
+            }
+
+            Console.ReadKey();
+        }
+        public static void runWhere()
+        {
+            CompanyDBContext db = new CompanyDBContext();
+            List<Employee> emps = db.Employees.Where(temp=>temp.Salary>7000).ToList();
+
+            foreach (Employee e in emps)
             {
                 Console.Write(e.EmpId);
                 Console.Write(",");

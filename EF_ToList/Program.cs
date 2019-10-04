@@ -11,7 +11,8 @@ namespace EF
     {
         static void Main(string[] args)
         {
-            RunProgram.run();
+            //RunProgram.runToList();
+            RunProgram.runWhere();
         }
     }
 }
